@@ -1,10 +1,7 @@
 package pl.folkerts.ecommerce;
 
-import java.beans.BeanProperty;"import"
-
-
-
-
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class App {
@@ -12,7 +9,4 @@ public class App {
         System.out.println("It works");
         SpringApplication.run(App.class, args);
     }
-
-    @Bean
-
 }
