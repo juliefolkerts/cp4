@@ -12,7 +12,9 @@ public class ProductCatalogController {
 
     ProductCatalog productCatalog;
 
-
+    public ProductCatalogController(ProductCatalog productCatalog) {
+        this.productCatalog = productCatalog;
+    }
 
     @GetMapping("/api/version")
     String version() {
@@ -21,6 +23,6 @@ public class ProductCatalogController {
 
    @GetMapping("/api/products")
    List<Product> products() {
-
+        return productCatalog.allProducts();
    }
 }
