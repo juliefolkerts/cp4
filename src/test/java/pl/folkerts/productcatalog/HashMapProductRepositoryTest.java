@@ -3,6 +3,7 @@ package pl.folkerts.productcatalog;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,4 +32,13 @@ public class HashMapProductRepositoryTest {
 
         assertEquals(1, products.size());
     }
+
+    private ProductRepository thereIsProductRepository(){
+        return new ArrayListProductStorage();
+    }
+
+    private Product thereIsProduct() {
+        return new Product(UUID.randomUUID(), "test", "desc");
+    }
+
 }
