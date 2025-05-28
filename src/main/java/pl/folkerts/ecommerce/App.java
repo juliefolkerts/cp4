@@ -15,8 +15,15 @@ public class App {
 
     @Bean
     ProductCatalog createProductCatalog() {
-        return new ProductCatalog(
+        ProductCatalog catalog = new ProductCatalog(
                 new ArrayListProductStorage()
         );
+
+        catalog.createProduct("nice one 1", "desc");
+        catalog.createProduct("nice one 2", "desc");
+        catalog.createProduct("nice one 3", "desc");
+        catalog.createProduct("nice one 4", "desc");
+
+        return catalog;
     }
 }
