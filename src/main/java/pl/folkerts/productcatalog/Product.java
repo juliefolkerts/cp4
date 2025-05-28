@@ -1,4 +1,4 @@
-package productcatalog;
+package pl.folkerts.productcatalog;
 
 import java.math.BigDecimal;
 import java.util.UUID;

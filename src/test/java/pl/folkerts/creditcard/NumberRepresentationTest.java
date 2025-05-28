@@ -1,4 +1,4 @@
-package creditcard;
+package pl.folkerts.creditcard;
 
 import org.junit.jupiter.api.Test;
 

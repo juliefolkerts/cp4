@@ -1,4 +1,4 @@
-package productcatalog;
+package pl.folkerts.productcatalog;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,10 +1,9 @@
-package productcatalog;
+package pl.folkerts.productcatalog;
 
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Vector;
 
 import static org.junit.jupiter.api.Assertions.*;
 

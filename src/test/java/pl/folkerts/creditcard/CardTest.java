@@ -1,10 +1,6 @@
-package creditcard;
+package pl.folkerts.creditcard;
 
 import org.junit.jupiter.api.Test;
-import pl.folkerts.creditcard.CreditBelowThresholdException;
-import pl.folkerts.creditcard.CreditCantBeAssignedTwiceException;
-import pl.folkerts.creditcard.CreditCard;
-import pl.folkerts.creditcard.NotEnoughMoneyException;
 
 import java.math.BigDecimal;
 

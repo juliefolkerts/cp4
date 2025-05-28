@@ -1,4 +1,4 @@
-package productcatalog;
+package pl.folkerts.productcatalog;
 
 import org.junit.jupiter.api.Test;
 
