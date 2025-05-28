@@ -1,4 +1,4 @@
-package pl.folkerts.ecommerce.creditcard;
+package pl.folkerts.creditcard;
 
 import java.math.BigDecimal;
 
