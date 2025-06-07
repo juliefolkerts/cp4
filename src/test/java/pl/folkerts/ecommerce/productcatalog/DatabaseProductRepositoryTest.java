@@ -1,16 +1,47 @@
 package pl.folkerts.ecommerce.productcatalog;
 
 import org.junit.jupiter.api.Test;
-import pl.folkerts.ecommerce.productcatalog.ArrayListProductStorage;
-import pl.folkerts.ecommerce.productcatalog.Product;
-import pl.folkerts.ecommerce.productcatalog.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 public class DatabaseProductRepositoryTest {
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+
+    @Test
+    void itQueryDb() {
+        var sql = "select now() curr_time";
+        var result = jdbcTemplate.queryForObject(sql, String.class);
+
+        assert result.contains("2025");
+    }
+
+    @Test
+    void itCreatesTables() {
+        var sql = """
+                create table `product__catalog`
+                    id VARCHAR(100) NOT NULL
+                    name VARCHAR(50) NOT NULL
+                    PRIMARY KEY(id)
+                );
+            """;
+        jdbcTemplate.execute(sql);
+        jdbcTemplate.query()
+        var result = jdbcTemplate.queryForObject("select count(*) from `product__catalog`", Integer.class);
+
+        assert result == 0;
+
+    }
+
 
     @Test
     void itStoresAnsLoadsProduct() {
