@@ -1,6 +1,9 @@
-package pl.folkerts.productcatalog;
+package pl.folkerts.ecommerce.productcatalog;
 
 import org.junit.jupiter.api.Test;
+import pl.folkerts.ecommerce.productcatalog.ArrayListProductStorage;
+import pl.folkerts.ecommerce.productcatalog.Product;
+import pl.folkerts.ecommerce.productcatalog.ProductRepository;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,7 +25,7 @@ public class DatabaseProductRepositoryTest {
     }
 
     private ProductRepository thereIsProductRepository() {
-        return new ArrayListProductStorage();
+        return new DbProductRepository();
     }
 
     private Product thereIsProduct() {

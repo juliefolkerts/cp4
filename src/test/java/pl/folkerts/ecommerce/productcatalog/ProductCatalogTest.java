@@ -1,6 +1,10 @@
-package pl.folkerts.productcatalog;
+package pl.folkerts.ecommerce.productcatalog;
 
 import org.junit.jupiter.api.Test;
+import pl.folkerts.ecommerce.productcatalog.HashMapProductRepository;
+import pl.folkerts.ecommerce.productcatalog.InvalidPriceException;
+import pl.folkerts.ecommerce.productcatalog.Product;
+import pl.folkerts.ecommerce.productcatalog.ProductCatalog;
 
 import java.math.BigDecimal;
 import java.util.List;

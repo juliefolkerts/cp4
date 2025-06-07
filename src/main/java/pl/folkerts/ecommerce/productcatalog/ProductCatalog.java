@@ -1,4 +1,4 @@
-package pl.folkerts.productcatalog;
+package pl.folkerts.ecommerce.productcatalog;
 
 import java.math.BigDecimal;
 import java.util.List;
