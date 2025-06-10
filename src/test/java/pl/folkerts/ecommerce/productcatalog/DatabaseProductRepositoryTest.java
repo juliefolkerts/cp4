@@ -24,14 +24,14 @@ public class DatabaseProductRepositoryTest {
         jdbcTemplate.execute("DROP TABLE `product_catalog__products` IF EXISTS");
 
         var sql = """
-                CREATE table `product_catalog__products` (
-                    id VARCHAR(100) NOT NULL,
-                    name VARCHAR(50) NOT NULL,
-                    description VARCHAR(144) NOT NULL,
-                    cover VARCHAR(50),
-                    price DECIMAL(12,2),
-                    PRIMARY KEY(id)
-                );
+                  CREATE table `product_catalog__products` (
+                      id VARCHAR(100) NOT NULL,
+                      name VARCHAR(50) NOT NULL,
+                      description VARCHAR(144) NOT NULL,
+                      cover VARCHAR(50),
+                      price DECIMAL(12,2),
+                      PRIMARY KEY(id)
+               );
         """;
         jdbcTemplate.execute(sql);
     }
@@ -59,7 +59,7 @@ public class DatabaseProductRepositoryTest {
                 INSERT INTO `product_catalog__products` (id, name, description)
                 VALUES
                     ('ea0665d0-7b07-46bb-9a07-0911ef5a68de', 'Nice product 1', 'nice one'),
-                    ('678753c3-69d9-4f8e-bc41-6f0d4d960cac'. 'Nice product 2', 'even nicer');
+                    ('678753c3-69d9-4f8e-bc41-6f0d4d960cac', 'Nice product 2', 'even nicer');
                 """;
 
         jdbcTemplate.execute(sql);

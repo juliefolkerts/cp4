@@ -1,15 +1,15 @@
 package pl.folkerts.ecommerce.productcatalog;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
 public class ProductCatalogConfiguration {
     @Bean
-    ProductCatalog createProductCatalog() {
-        ProductCatalog catalog = new ProductCatalog(
-                new ArrayListProductStorage()
-        );
+    ProductCatalog createProductCatalog(ProductRepository productRepository) {
+        ProductCatalog catalog = new ProductCatalog(productRepository);
 
         catalog.createProduct("nice one 1", "desc");
         catalog.createProduct("nice one 2", "desc");
@@ -17,5 +17,13 @@ public class ProductCatalogConfiguration {
         catalog.createProduct("nice one 4", "desc");
 
         return catalog;
+    }
+
+    @Autowired
+    //dbcTemplate jdbcTemplate;
+
+    @Bean
+    ProductRepository createMyProductRepository(JdbcTemplate jdbcTemplate) {
+        return new DbProductRepository(jdbcTemplate);
     }
 }
