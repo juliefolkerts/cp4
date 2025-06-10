@@ -19,7 +19,7 @@ public class ProductCatalogConfiguration {
         return catalog;
     }
 
-    @Autowired
+    //@Autowired
     //dbcTemplate jdbcTemplate;
 
     @Bean
