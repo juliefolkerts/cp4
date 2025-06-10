@@ -1,7 +1,10 @@
 package pl.folkerts.ecommerce.productcatalog;
 
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.folkerts.ecommerce.productcatalog.Product;
+import pl.folkerts.ecommerce.productcatalog.ProductCatalog;
 
 import java.util.List;
 

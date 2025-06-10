@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import pl.folkerts.ecommerce.productcatalog.ArrayListProductStorage;
+import pl.folkerts.ecommerce.productcatalog.ProductCatalog;
 
 @Configuration
 public class ProductCatalogConfiguration {
