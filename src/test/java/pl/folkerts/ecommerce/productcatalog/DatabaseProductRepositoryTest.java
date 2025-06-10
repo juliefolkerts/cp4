@@ -28,14 +28,14 @@ public class DatabaseProductRepositoryTest {
     @Test
     void itCreatesTables() {
         var sql = """
-                create table `product__catalog`
-                    id VARCHAR(100) NOT NULL
-                    name VARCHAR(50) NOT NULL
+                create table `product__catalog` (
+                    id VARCHAR(100) NOT NULL,
+                    name VARCHAR(50) NOT NULL,
                     PRIMARY KEY(id)
                 );
-            """;
+        """;
         jdbcTemplate.execute(sql);
-        jdbcTemplate.query()
+        
         var result = jdbcTemplate.queryForObject("select count(*) from `product__catalog`", Integer.class);
 
         assert result == 0;
