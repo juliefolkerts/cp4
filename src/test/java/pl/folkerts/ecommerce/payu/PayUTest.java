@@ -1,5 +1,6 @@
 package pl.folkerts.ecommerce.payu;
 
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
@@ -16,7 +17,7 @@ public class PayUTest {
         OrderCreateResponse response = payU.handle(request);
 
         assertNull(response.getRedirectUri());
-        assertNull(response.orderId());
+        assertNull(response.getOrderId());
     }
 
     private OrderCreateRequest thereIsExampleOrderCreateRequest() {
@@ -28,16 +29,18 @@ public class PayUTest {
                 .setTotalAmount("21000")
                 .setExtOrderId(UUID.randomUUID())
                 .setBuyer(new Buyer()
-                        .setEmail("emaillll")
+                        .setEmail("example@email")
                         .setFirstName("John")
-                        .setLasrName("Doe")
+                        .setLastName("Do")
                 )
-                .setProduct(Arrays.asList()
+                .setProducts(Arrays.asList(
+                        new Product()
                         .setName("My book")
                         .setUnitPrice("11000")
                         .setQuantity("1")
                 ));
-    )
+        return null;
+    }
 
 //        curl -X POST https://secure.payu.com/api/v2_1/orders \
 //        -H "Content-Type: application/json" \
@@ -71,11 +74,12 @@ public class PayUTest {
 //        }
 //        ]
 //    }'
-        return null;
-    }
+
 
     private PayU thereIsPayU() {
         var cfg = PayUConfiguration.sandbox();
-        return new PayU(new RestTemplate(), cfg);
+        return new PayU(
+                new RestTemplate(), //??????????????????????????????????????????????????????????????????????????????????????????????
+                cfg);
     }
 }

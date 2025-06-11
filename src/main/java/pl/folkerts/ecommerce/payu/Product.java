@@ -2,6 +2,8 @@ package pl.folkerts.ecommerce.payu;
 
 public class Product {
     String name;
+    String unitPrice;
+    String quantity;
 
     public Product setName(String name) {
         this.name = name;
@@ -17,6 +19,4 @@ public class Product {
         this.quantity = quantity;
         return this;
     }
-    String unitPrice;
-    String quantity;
 }
