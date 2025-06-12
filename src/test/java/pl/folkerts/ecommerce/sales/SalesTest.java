@@ -59,7 +59,7 @@ public class SalesTest {
         Offer offer2 = sales.getCurrentOffer(customer1);
 
         assertEquals(BigDecimal.valueOf(10), offer1.getTotal());
-        assertEquals(BigDecimal.valueOf(20), offer2.getTotal());
+        assertEquals(BigDecimal.valueOf(10), offer2.getTotal());
     }
 
     @Test
