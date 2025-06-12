@@ -6,20 +6,20 @@ public class PayUConfiguration {
     String md5;
     String clientId;
     String clientSecret;
-    boolean sandbox;
+    boolean sandboxMode;
     //    POS ID (pos_id):                    300746
     //    Second key (MD5):                   b6ca15b0d1020e8094d9b5f8d163db54
     //    OAuth protocol - client_id:         300746
     //    OAuth protocol - client_secret:     2ee86a66e5d97e3fadc400c9f19b065d
 
-    public PayUConfiguration(String posID, String md5, String clientId, String clientSecret, boolean sandbox) {
+    public PayUConfiguration(String posID, String md5, String clientId, String clientSecret, boolean sandboxMode) {
         this.posID = posID;
         this.md5 = md5;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
-        this.sandbox = sandbox;
+        this.sandboxMode = sandboxMode;
     }
-    public static PayUConfiguration sandbox(String posID, String md5, String clientId, String clientSecret) {
+    public static PayUConfiguration byEnvVariables() {
         return new PayUConfiguration(
                 System.getenv("PAYU_POS_ID"),
                 System.getenv("PAYU_MD5"),
@@ -28,17 +28,17 @@ public class PayUConfiguration {
                 false
                 );
     }
-
     public static PayUConfiguration sandbox() {
         return new PayUConfiguration(
-                "300746"
-                "b6ca15b0d1020e8094d9b5f8d163db54" //????????????????????????????????????????????????
-                "300746" //????????????????????????????????????????????????????????????????????????????????????????
-                "2ee86a66e5d97e3fadc400c9f19b065d"
-                false
-
+                "300746",
+                "b6ca15b0d1020e8094d9b5f8d163db54",
+                "300746",
+                "2ee86a66e5d97e3fadc400c9f19b065d",
+                true
         );
     }
+
+
 }
 
 //            "300746";

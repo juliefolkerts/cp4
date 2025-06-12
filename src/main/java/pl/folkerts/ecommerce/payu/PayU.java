@@ -17,7 +17,7 @@ public class PayU {
     }
 
     public OrderCreateResponse handle(OrderCreateRequest request) {
-        request.setMerchantPosId(cfg.posID);
+        request.setMerchantPosId(cfg.posID); //?? --> posId?
         var url = getUrl("/api/v2_1/orders");
 
         HttpHeaders headers = new HttpHeaders();
@@ -36,12 +36,13 @@ public class PayU {
     }
     private String getToken() {
         var url = getUrl("/pl/standard/user/oauth/authorize");
-        String body = String.format("grant_type=client_credentials&client_id=%s&client_secret=%s",
-                cfg.clientId, //not getClientId
-                cfg.clientSecret //not getClientSecret?
+        String body = String.format(
+                "grant_type=client_credentials&client_id=%s&client_secret=%s",
+                cfg.clientId,
+                cfg.clientSecret
         );
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", String.format("Bearer %s", body));
+        headers.add("Content-Type", "application/x-www-form-urlencoded");
         HttpEntity<String> requestHttpEntity = new HttpEntity<>(body, headers);
         ResponseEntity<AuthorizationResponse> response = http.postForEntity(
                 url,
@@ -49,12 +50,12 @@ public class PayU {
                 AuthorizationResponse.class
         );
 
-        return orderCreateResponse.getBody(); //?????????????????????????????????????????????????????
+        return response.getBody().getAccess_token();
     }
 
 
     private String getUrl(String path) {
-        if (cfg.sandboxMode) { //???????????????????????????????????????????????????????????????????
+        if (cfg.sandboxMode) {
             return String.format("https://secure.snd.payu.com%s", path);
 
         }

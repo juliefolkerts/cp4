@@ -8,7 +8,7 @@ public class OrderCreateRequest {
     String merchantPosId;
     String description;
     String currencyCode;
-    Integer totalAmount;
+    String totalAmount;
     String extOrderId;
     Buyer buyer;
     List<Product> products;
@@ -58,11 +58,11 @@ public class OrderCreateRequest {
         return this;
     }
 
-    public Integer getTotalAmount() {
+    public String getTotalAmount() {
         return totalAmount;
     }
 
-    public OrderCreateRequest setTotalAmount(Integer totalAmount) {
+    public OrderCreateRequest setTotalAmount(String totalAmount) {
         this.totalAmount = totalAmount;
         return this;
     }
@@ -95,15 +95,7 @@ public class OrderCreateRequest {
     }
 
 
-
-
-
-
-
-
-
-
-    //    "notifyUrl": "https://your.eshop.com/notify",
+//    "notifyUrl": "https://your.eshop.com/notify",
 //            "customerIp": "127.0.0.1",
 //            "merchantPosId": "300746",
 //            "description": "RTV market",

@@ -67,18 +67,19 @@ public class SalesTest {
         //Arrange
         SalesFacade sales = thereIsSalesModuleUnderTest();
         String customerId = thereIsCustomer("Julie");
-        String procuctId = thereIsProduct("Product X", BigDecimal.valueOf(10));
+        String productId = thereIsProduct("Product X", BigDecimal.valueOf(10));
 
         //Act
-        sales.addToCart(customerId, procuctId);
+        sales.addToCart(customerId, productId);
         Offer offer = sales.getCurrentOffer(customerId);
 
-        ReservationDetails details = sales.acceptOffer(
-                new AcceptOfferCommand(
+       ReservationDetails details = sales.acceptOffer(
+                new AcceptOfferCommand()
                         .setFname("Julie")
                         .setLname("Folkerts")
-                        .setEmail("JulieFolkerts@gmail.com")
-        );
+                        .setEmail("JulieF@gmail.com")
+                );
+
     }
 
     private String thereIsProduct(String name, BigDecimal price) {

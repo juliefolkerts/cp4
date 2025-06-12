@@ -2,11 +2,12 @@ package pl.folkerts.ecommerce.payu;
 
 import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Test;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertNull;
+//import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class PayUTest {
     @Test
@@ -16,8 +17,8 @@ public class PayUTest {
         OrderCreateRequest request = thereIsExampleOrderCreateRequest();
         OrderCreateResponse response = payU.handle(request);
 
-        assertNull(response.getRedirectUri());
-        assertNull(response.getOrderId());
+        assertNotNull(response.getRedirectUri());
+        assertNotNull(response.getOrderId());
     }
 
     private OrderCreateRequest thereIsExampleOrderCreateRequest() {
@@ -27,19 +28,20 @@ public class PayUTest {
                 .setDescription("Some service")
                 .setCurrencyCode("PLN")
                 .setTotalAmount("21000")
-                .setExtOrderId(UUID.randomUUID())
+                .setExtOrderId(UUID.randomUUID().toString())
                 .setBuyer(new Buyer()
                         .setEmail("example@email")
                         .setFirstName("John")
-                        .setLastName("Do")
+                        .setLastName("Doe")
                 )
                 .setProducts(Arrays.asList(
                         new Product()
-                        .setName("My book")
-                        .setUnitPrice("11000")
-                        .setQuantity("1")
+                            .setName("Book 1")
+                            .setUnitPrice("11000")
+                            .setQuantity("1")
                 ));
-        return null;
+
+        return exampleOrderCreateRequest;
     }
 
 //        curl -X POST https://secure.payu.com/api/v2_1/orders \
@@ -78,8 +80,7 @@ public class PayUTest {
 
     private PayU thereIsPayU() {
         var cfg = PayUConfiguration.sandbox();
-        return new PayU(
-                new RestTemplate(), //??????????????????????????????????????????????????????????????????????????????????????????????
-                cfg);
+
+        return new PayU(new RestTemplate(), cfg);
     }
 }
