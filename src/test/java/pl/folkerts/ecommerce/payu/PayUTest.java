@@ -28,20 +28,17 @@ public class PayUTest {
         exampleOrderCreateRequest.setTotalAmount("21000");
         exampleOrderCreateRequest.setExtOrderId(UUID.randomUUID().toString());
 
-        // Create Buyer object without chaining
         Buyer buyer = new Buyer();
         buyer.setEmail("example@email");
         buyer.setFirstName("John");
         buyer.setLastName("Doe");
         exampleOrderCreateRequest.setBuyer(buyer);
 
-        // Create Product object without chaining
         Product product = new Product();
         product.setName("Julie");
         product.setUnitPrice("100");
         product.setQuantity("5");
 
-        // Still use Arrays.asList
         exampleOrderCreateRequest.setProducts(Arrays.asList(product));
 
         return exampleOrderCreateRequest;
