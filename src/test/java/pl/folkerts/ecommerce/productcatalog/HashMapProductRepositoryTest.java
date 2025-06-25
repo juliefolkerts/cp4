@@ -19,7 +19,7 @@ public class HashMapProductRepositoryTest {
         Product loaded = repository.loadProductById(product.getId());
         //Assert
         assertEquals(product.getId(), loaded.getId());
-        assertEquals(product.getId(), loaded.getDescription());
+        assertEquals(product.getDescription(), loaded.getDescription());
     }
 
     @Test

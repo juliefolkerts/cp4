@@ -1,22 +1,32 @@
 package pl.folkerts.ecommerce.payu;
 
 public class Product {
-    String name;
-    String unitPrice;
-    String quantity;
+    private String name;
+    private String unitPrice;
+    private String quantity;
 
-    public Product setName(String name) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
-    public Product setUnitPrice(String unitPrice) {
+    public String getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(String unitPrice) {
         this.unitPrice = unitPrice;
-        return this;
     }
 
-    public Product setQuantity(String quantity) {
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
-        return this;
     }
 }
+

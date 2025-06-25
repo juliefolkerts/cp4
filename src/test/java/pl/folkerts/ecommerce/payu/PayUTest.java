@@ -4,11 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-//import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class PayUTest {
     @Test
@@ -24,26 +22,31 @@ public class PayUTest {
 
     private OrderCreateRequest thereIsExampleOrderCreateRequest() {
         var exampleOrderCreateRequest = new OrderCreateRequest();
-        exampleOrderCreateRequest
-                .setCustomerIp("127.0.0.1")
-                .setDescription("Some service")
-                .setCurrencyCode("PLN")
-                .setTotalAmount("21000")
-                .setExtOrderId(UUID.randomUUID().toString())
-                .setBuyer(new Buyer()
-                        .setEmail("example@email")
-                        .setFirstName("John")
-                        .setLastName("Doe")
-                )
-                .setProducts(Arrays.asList(
-                        new Product()
-                                .setName("Julie")
-                                .setUnitPrice("100")
-                                .setQuantity("5")
-                ));
+        exampleOrderCreateRequest.setCustomerIp("127.0.0.1");
+        exampleOrderCreateRequest.setDescription("Some service");
+        exampleOrderCreateRequest.setCurrencyCode("PLN");
+        exampleOrderCreateRequest.setTotalAmount("21000");
+        exampleOrderCreateRequest.setExtOrderId(UUID.randomUUID().toString());
+
+        // Create Buyer object without chaining
+        Buyer buyer = new Buyer();
+        buyer.setEmail("example@email");
+        buyer.setFirstName("John");
+        buyer.setLastName("Doe");
+        exampleOrderCreateRequest.setBuyer(buyer);
+
+        // Create Product object without chaining
+        Product product = new Product();
+        product.setName("Julie");
+        product.setUnitPrice("100");
+        product.setQuantity("5");
+
+        // Still use Arrays.asList
+        exampleOrderCreateRequest.setProducts(Arrays.asList(product));
 
         return exampleOrderCreateRequest;
     }
+
 
 
     private PayU thereIsPayU() {
@@ -52,3 +55,5 @@ public class PayUTest {
         return new PayU(new RestTemplate(), cfg);
     }
 }
+
+
