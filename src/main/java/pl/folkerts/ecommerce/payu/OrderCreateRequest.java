@@ -93,6 +93,17 @@ public class OrderCreateRequest {
         this.products = products;
         return this;
     }
+    // NEW: calculate total from products and update totalAmount accordingly
+    public void calculateTotalFromProducts() {
+        int total = 0;
+        for (Product product : products) {
+            int price = Integer.parseInt(product.getUnitPrice());
+            int qty = Integer.parseInt(product.getQuantity());
+            total += price * qty;
+        }
+        this.totalAmount = String.valueOf(total);
+    }
+
 
 
 //    "notifyUrl": "https://your.eshop.com/notify",
@@ -123,3 +134,4 @@ public class OrderCreateRequest {
 //        ]
 
 }
+

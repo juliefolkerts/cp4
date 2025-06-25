@@ -25,7 +25,7 @@ public class PayUTest {
         exampleOrderCreateRequest.setCustomerIp("127.0.0.1");
         exampleOrderCreateRequest.setDescription("Some service");
         exampleOrderCreateRequest.setCurrencyCode("PLN");
-        exampleOrderCreateRequest.setTotalAmount("21000");
+        exampleOrderCreateRequest.setTotalAmount("21000"); // this will be overwritten soon
         exampleOrderCreateRequest.setExtOrderId(UUID.randomUUID().toString());
 
         Buyer buyer = new Buyer();
@@ -41,10 +41,11 @@ public class PayUTest {
 
         exampleOrderCreateRequest.setProducts(Arrays.asList(product));
 
+        // NEW: calculate total from products and update totalAmount accordingly
+        exampleOrderCreateRequest.calculateTotalFromProducts();
+
         return exampleOrderCreateRequest;
     }
-
-
 
     private PayU thereIsPayU() {
         var cfg = PayUConfiguration.sandbox();
@@ -52,5 +53,6 @@ public class PayUTest {
         return new PayU(new RestTemplate(), cfg);
     }
 }
+
 
 
